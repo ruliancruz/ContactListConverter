@@ -1,14 +1,23 @@
 /*
 	Conversor de Lista de Contatos
-	Feito por Rulian Cruz: 
+	Feito por Rulian Cruz: https://github.com/ruliancruz/ContactListConverter
+	
+	Um programa feito em C que seleciona todos os números de telefone contidos em uma lista de contatos
+	exportada do Google Contacts em CSV e os ordena em coluna única em outro arquivo CSV.
+	
+	Para usá-lo coloque o arquivo que deseja converter na mesma pasta que esse programa com o nome igual o da constante CONTACT_LIST_IN
+	
+	Apenas números de contato que comecem com o caractere '+' serão convertidos
+	
+	O arquivo original será excluído após a execução do programa
 */
+
 #include <stdio.h>
 #include <locale.h>
-#include <string.h>
 
-#define CONTACT_LIST_IN "contacts.csv"
-#define CONTACT_LIST_ASSISTANT "contacts2.csv"
-#define CONTACT_LIST_OUT "ContatosProntos.csv"
+#define CONTACT_LIST_IN "contacts.csv" //Arquivo original
+#define CONTACT_LIST_ASSISTANT "contacts2.csv" //Arquivo Auxiliar
+#define CONTACT_LIST_OUT "ContatosProntos.csv" //Arquivo final
 
 void main()
 {
@@ -20,7 +29,6 @@ void main()
 	FILE *contactsOut;
 	
 	setlocale(LC_ALL, "Portuguese");
-	//contactsIn = fopen(CONTACT_LIST_IN, "r");
 	
 	if(!(contactsIn = fopen(CONTACT_LIST_IN, "r")))
 	{
